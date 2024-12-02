@@ -6,9 +6,14 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class DayOne {
-    public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>();
-        ArrayList<Integer> list2 = new ArrayList<>();
+    public ArrayList<Integer> list;
+    public ArrayList<Integer> list2;
+    public int result;
+    public int result2;
+
+    public DayOne() {
+        list = new ArrayList<>();
+        list2 = new ArrayList<>();
         try {
             File input = new File("assets/aoc1.txt");
             Scanner r = new Scanner(input);
@@ -23,7 +28,7 @@ public class DayOne {
         Collections.sort(list);
         Collections.sort(list2);
 
-        int result = 0;
+        result = 0;
 
         for(int i=0; i<list.size(); i++){
            result += Math.abs(list.get(i) - list2.get(i));
@@ -31,15 +36,15 @@ public class DayOne {
 
         System.out.println(result);
 
-        result = 0;
+        result2 = 0;
 
         for(int i=0; i<list.size(); i++){
             if(list2.contains(list.get(i))){
-                result += list.get(i) * Collections.frequency(list2, list.get(i));
+                result2 += list.get(i) * Collections.frequency(list2, list.get(i));
             }
         }
 
-        System.out.println(result);
+        System.out.println(result2);
 
     }
 }

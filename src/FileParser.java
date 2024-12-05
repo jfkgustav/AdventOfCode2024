@@ -13,8 +13,17 @@ public class FileParser {
             while(r.hasNextLine()){
                 parsedFile.add(r.nextLine());
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (FileNotFoundException outer) {
+            try {
+                File input = new File(("assets/" + filename));
+                Scanner r = new Scanner(input);
+                while(r.hasNextLine()){
+                    parsedFile.add(r.nextLine());
+                }
+            }
+            catch(FileNotFoundException e){
+                throw new RuntimeException(e);
+            }
         }
         return parsedFile;
     }
